@@ -12,6 +12,11 @@ class BirdsController < ApplicationController
     render json: bird, status: :created
   end
 
+  private
+  def bird_params
+    params.permit(:name, :species)
+  end
+
   # GET /birds/:id
   def show
     bird = Bird.find_by(id: params[:id])
